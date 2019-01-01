@@ -1,0 +1,39 @@
+{
+  "pages": [
+    "pages/classic/classic",
+    "pages/book/book",
+    "pages/my/my",
+    "pages/book-detail/book-detail"
+  ],
+  "window": {
+    "backgroundTextStyle": "light",
+    "navigationBarBackgroundColor": "#fff",
+    "navigationBarTitleText": "纸短情长",
+    "navigationBarTextStyle": "black"
+  },
+  "tabBar": {
+    "selectedColor": "#ff4f19",
+    "backgroundColor": "#ffffff",
+    "color": "#000000",
+    "list": [
+      {
+        "selectedIconPath": "/images/tab/todo-active.png",
+        "pagePath": "pages/classic/classic",
+        "text": "流行",
+        "iconPath": "/images/tab/todo.png"
+      },
+      {
+        "selectedIconPath": "/images/tab/book-active.png",
+        "pagePath": "pages/book/book",
+        "text": "书籍",
+        "iconPath": "/images/tab/book.png"
+      },
+      {
+        "selectedIconPath": "/images/tab/me-active.png",
+        "pagePath": "pages/my/my",
+        "text": "喜欢",
+        "iconPath": "/images/tab/me.png"
+      }
+    ]
+  }
+}

@@ -1,0 +1,65 @@
+<!--components/search/index.wxml-->
+<view class="container">
+    <!-- 搜索栏 -->
+    <view class="header">
+        <view class="search-container">
+            <image 
+                class="icon" 
+                src="images/search.png"/>
+            <input 
+                class="bar"
+                type="text"
+                placeholder='书籍名称' 
+                placeholder-class="in-bar" 
+                auto-focus="true"
+                bind:confirm="onConfirm"
+                value="{{searchInput}}"/>
+            <image 
+                class="cancel-img" 
+                src="images/cancel.png"
+                bind:tap="onClear"/>
+        </view>
+        <view class="cancel" bind:tap="onCancel">取消</view>
+    </view>
+    <view wx:if="{{!showSearchResult}}">
+        <!-- 历史搜索 -->
+        <view class="history">
+            <view class="title">
+                <view class="chunk"></view>
+                <text class="text">历史搜索</text>
+            </view>
+            <view class="tags">
+                <block wx:for="{{historyWords}}" wx:key="">
+                    <v-tag bind:tapping="onConfirm" text="{{item}}"></v-tag>
+                </block>
+            </view>
+        </view>
+        <!-- 热门搜索 -->
+        <view class="history hot-search">
+            <view class="title">
+                <view class="chunk"></view>
+                <text>热门搜索</text>
+            </view>
+            <view class="tags">
+                <block wx:for="{{hotWords}}" wx:key="">
+                    <v-tag bind:tapping="onConfirm" text="{{item}}"></v-tag>
+                </block>
+            </view>
+        </view>
+    </view>
+
+    <!-- 搜索结果 -->
+    <view wx:if="{{showSearchResult}}">
+        <view class="books-container">
+            <block wx:for="{{dataArray}}" wx:key="{{item.id}}">
+                <book-cmp book="{{item}}" /> 
+            </block>
+        </view>
+    </view>
+
+    <!-- 加载控件 -->
+    <v-loading class="loading-center" wx:if="{{loadingCenter}}"/>
+    <v-loading wx:if="{{loading}}"/>
+    <text class="empty-tip" wx:if="{{noResult}}">没有搜索到相关数据</text>
+</view>
+
